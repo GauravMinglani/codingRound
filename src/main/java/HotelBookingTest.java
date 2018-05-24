@@ -1,27 +1,25 @@
-import com.sun.javafx.PlatformUtil;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.sun.javafx.PlatformUtil;
+
 public class HotelBookingTest {
-	
+
 	WebDriver driver;
-	WebElement element;
-	WebDriverWait wait;
 
 	@BeforeSuite(alwaysRun = true)
 	public void setupSuite() {
 		driver = new ChromeDriver();
+		 PageFactory.initElements(driver, this);
 	}
 
 	@AfterSuite(alwaysRun = true)
@@ -35,16 +33,8 @@ public class HotelBookingTest {
 		driver.get("https://www.cleartrip.com/");
 	}
 
-
-//    WebDriver driver = new ChromeDriver();
-
-//    @FindBy(xpath=".//*[@id='Home']/section/div/aside[1]/nav/ul[1]/li[2]/a[1]")
-	//@FindBy(css = "a[href='/hotels']")
- //   WebElement hotelLink;
-//	@FindBy(css = "a[title='Find hotels in destinations around the world']")
-     
-	@FindBy(name= "localsNav")
-	WebElement local;
+    @FindBy(linkText = "Hotels")
+    private WebElement hotelLink;
 
     @FindBy(id = "Tags")
     private WebElement localityTextBox;
@@ -57,19 +47,11 @@ public class HotelBookingTest {
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
+    	
 //        setDriverPath();
 
-    	//WebElement web=driver.findElement(By.xpath(".//*[@id='Home']/section/div/aside[1]/nav/ul[1]/li[2]/a[1]"));
-    	
-//    	WebElement web=driver.findElement(By.xpath("/html/body/section[2]/section/div/aside[1]/nav/ul[1]/li[2]/a[1]"));
-    	
-    	///html/body/section[2]/section/div/aside[1]/nav/ul[1]/li[2]/a[1]
 //        driver.get("https://www.cleartrip.com/");
-//    	System.out.println("value name"+web.getText());
-    	System.out.println("FOund");
-        /*hotelLink.click();*/
-    	
-    	local.click();
+        hotelLink.click();
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
 
