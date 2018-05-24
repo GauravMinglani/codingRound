@@ -1,0 +1,25 @@
+New things implemented in all the java files.
+1. Test annotations of TestNG:
+	i.   @BeforeSuite - Initialize chrome driver
+	ii.  @AfterSuite - Quit the driver
+	iii. @BeforeMethod - Maximize the window and open the website used for testing
+	iv.  @BeforeTest - Check for the OS type and initialize the driver. setDriverPath() is of no use after this.
+	v.   @Test - Write the test case.
+2. Need to comment setDriverPath() as it will be automatically called when written in annotation of @BeforeTest.
+3. Need to comment unneseccary wait's.
+
+Things implemented in FlightBookingTest.java
+1. Need to comment radio button for oneway click, as we need to check if it is found on the page or not. Store it in one WebElement and then later click on it.
+2. Have implemented for each loop, to check for element which comes in the list and select the element which is compared.
+It is implemented in From and To places both.
+3. For date selection we need to click on the date text box and select today's date.
+4. For search button we have taken the css selectors.(css selectors are always better)
+
+Things implemented in HotelBookingTest.java
+1. Inappropriate API usage. For searching the elemets with FindBy annotaion the driver and the class must be register with the Selinium PageFactory.
+
+Things implemented in SignInTest.java
+1. After SignIn click need to switch to login frame.
+2. After clicking on sign in button, we need to switch back to home screen and close the new login frame.
+
+
